@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ServiceModel.Activation;
+using System.Web;
+using WcfServiceAPI.Core;
 using WcfServiceAPI.Models;
 
 namespace WcfServiceAPI
@@ -11,6 +13,29 @@ namespace WcfServiceAPI
 
    public class Service1 : IService1
    {
+      public string Authenticate(Credentials creds)
+      {
+         CredentialsValidator validator = new CredentialsValidator();
+         if (validator.IsValid(creds))
+            return new TokenBuilder().Build(creds);
+         throw new InvalidOperationException("Invalid credentials");
+      }
+
+
+      public string Test()
+      {
+         var token = HttpContext.Current.Request.Headers["Token"];
+         TokenValidator validator = new TokenValidator();
+         if (validator.IsValid(token))
+         {
+            return "Your token worked!";
+         }
+         else
+         {
+            return "Your token failed!";
+         }
+      }
+
       public string GetData(int value)
       {
          return string.Format("You entered: {0}", value);

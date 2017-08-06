@@ -66,10 +66,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\CredentialsValidator.cs" />
+    <Compile Include="Core\Hash.cs" />
+    <Compile Include="Core\TokenBuilder.cs" />
+    <Compile Include="Core\StringCipher.cs" />
+    <Compile Include="Core\TokenValidator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CompositeType.cs" />
+    <Compile Include="Models\Credentials.cs" />
     <Compile Include="Models\Result.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>

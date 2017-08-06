@@ -32,5 +32,18 @@ namespace WcfServiceAPI
       ResponseFormat = WebMessageFormat.Json,
       UriTemplate = "GetHello/{user}")]
       string GetHelloUser(string user);
+
+      [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
+      ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
+      UriTemplate = "Authenticate")] /* {"User":"user1","Password":"pass1"} */
+      [OperationContract]
+      string Authenticate(Credentials creds);
+
+      [OperationContract]
+      [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json,
+      ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare,
+      UriTemplate = "Test")]
+      string Test();
+
    }
 }

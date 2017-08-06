@@ -5,21 +5,11 @@ namespace WcfServiceAPI.Models
    [DataContract]
    public class CompositeType
    {
-      bool boolValue = true;
-      string stringValue = "Hello ";
+      [DataMember]
+      public bool BoolValue { get; set; }
 
       [DataMember]
-      public bool BoolValue
-      {
-         get { return boolValue; }
-         set { boolValue = value; }
-      }
+      public string StringValue { get; set; }
 
-      [DataMember]
-      public string StringValue
-      {
-         get { return stringValue; }
-         set { stringValue = value; }
-      }
    }
 }
